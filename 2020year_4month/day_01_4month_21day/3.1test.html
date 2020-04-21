@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    'use strict'
+    <script>
+        // 'use strict';
+        // // 如果浏览器支持strict模式，
+        // // 下面的代码将报ReferenceError错误:
+        // abc = 'Hello, world';
+        // console.log(abc);
+        "use strict";
+        // myFunction();
+        // function myFunction() {
+        //     y = 3.14;   // 报错 (y 未定义)
+        // }
+        x = 3.14;       // 不报错
+        myFunction();
+
+        function myFunction() {
+            "use strict";
+            y = 3.14;   // 报错 (y 未定义)
+        }
+
+    </script>
+
+</body>
+</html>
