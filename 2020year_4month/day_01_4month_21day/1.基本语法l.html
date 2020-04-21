@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    方法一-->
+    <script>
+        alert('Hello, world')
+        var x = 1; y = 2
+        console.log(x + y)
+        // 注释
+        // Ctrl + /
+        // 多行注释
+        /* Ctrl + Shift + /*/
+        if (2 > 1) {
+            x = 1;
+            y = 2;
+            z = 3;
+            if (x < y) {
+                z = 4
+            }
+            if (x > y) {
+                z = 5
+            }
+        }
+    </script>
+<!--    方法二 引用外在的js文件把JavaScript代码放入一个单独的.js文件中更利于维护代码，
+并且多个页面可以各自引用同一份.js文件
+可以在同一个页面中引入多个.js文件，还可以在页面中多次编写<script> js代码... </script>，浏览器按照顺序依次执行。。
+-->
+    <script src="test_day01.js"></script>
+<!--注意 有些时候你会看到<script>标签还设置了一个type属性：
+但这是没有必要的，因为默认的type就是JavaScript，所以不必显式地把type指定为JavaScript。
+-->
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
