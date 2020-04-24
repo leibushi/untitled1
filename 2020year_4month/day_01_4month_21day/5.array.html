@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // <!--        JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。
+
+        // 要取得Array的长度，直接访问length属性：-->
+        var arr = [1,2,3,'hello', null, true];
+        console.log(arr.length); // 6
+        //  请注意，直接给Array的length赋一个新的值会导致Array大小的变化：
+        var arr1 = [1,2,3];
+        // alert(arr.length);
+        arr1.length = 6;
+        arr1.length = 2; // [1, 2]
+        // arr2.length = 2;
+        console.log(arr1);  // [1, 2, 3, empty × 3]
+        // console.log(arr2);
+        // Array可以通过索引把对应的元素修改为新的值，因此，对Array的索引进行赋值会直接修改这个Array：
+        var arr2 = ['a', 'b', 'c'];
+        arr2[1] = 99;
+        console.log(arr2)  //  ["a", 99, "c"]
+        // 请注意，如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化：
+        // 大多数其他编程语言不允许直接改变数组的大小，越界访问索引会报错。然而，JavaScript的Array却不会有任何错误。在编写代码时，不建议直接修改Array的大小，访问索引时要确保索引不会越界。
+        var arr3 = [1, 2, 3];
+        arr3[5] = 'x';
+        console.log(arr3); // arr变为[1, 2, 3, undefined, undefined, 'x']
+        // slice slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array：
+        var arr4 = ['a', 'bb', 'cc'];
+        console.log(arr4.slice()); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
+        console.log(arr4.slice()); // 从索引3开始到结束: ['D', 'E', 'F', 'G']
+        // 如果不给slice()传递任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个Array：
+        var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        var aCopy = arr.slice();
+        aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        console.log(aCopy === arr); // false
+
+        // push和pop
+        // push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉：
+        var arr5 = [1, 2];
+        arr5.push('A', 'E')
+        console.log(arr5);  // 返回Array新的长度: 4
+        // unshift和shift
+        // 如果要往Array的头部添加若干元素，使用unshift()方法，
+        var arr = [1, 2];
+        arr.unshift('A', 'B'); // 返回Array新的长度
+        console.log(arr)
+        // shift()方法则把Array的第一个元素删掉：
+        arr.shift();arr.shift();
+        console.log(arr)
+
+        // sort
+        // sort() 可以对当前Array进行排序，它会直接修改当前Array的元素位置，
+        // 直接调用时，按照默认顺序排序；
+        var arr = ['B', 'C', 'A'];
+        arr.sort();
+        console.log(arr);
+        //  能否按照我们自己指定的顺序排序呢？完全可以，我们将在后面的函数中讲到
+        // reverse() 把整个Arrayd 元素给掉个个，也就时反转；
+        var arr = ['name', 'age', 'three'];
+        arr.reverse();
+        console.log(arr);
+
+        // splice
+        // splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素
+        var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
+        // 从索引2开始删除3个元素,然后再添加两个元素:
+        arr.splice(2, 3, 'Google', 'Facebook'); // 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
+        console.log(arr); // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+        // 只删除,不添加,从索引2开始删除2个元素:
+        arr.splice(2, 2); // ['Google', 'Facebook']
+        console.log(arr);
+        arr; // ['Microsoft', 'Apple', 'Oracle']
+
+        // 只添加,不删除:
+        arr.splice(2, 0, 'Google', 'Facebook'); // 返回[],因为没有删除任何元素
+        arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+        console.log(arr);
+
+        /*concat
+        concat()方法把当前的Array和另一个Array连接起来，并返回一个新的Array：*/
+        var arr = ['A', 'B', 'C'];
+        var added = arr.concat([1, 2, 3]);
+        added;  // ['A', 'B', 'C', 1, 2, 3];
+        console.log(added)
+        /*实际上，concat()方法可以接收任意个元素和Array，并且自动把Array拆开，然后全部添加到新的Array里：*/
+        var arr = ['A', 'B', 'C'];
+        arr.concat(1, 2, [1, 3, 5]);
+        console.log(arr);
+
+        /*join
+        join()方法是一个非常实用的方法，它把当前Array的每个元素都用指定的字符串连接起来，然后返回连接后的字符串：*/
+        var arr = ['A', 'B', 'C'];
+        // arr.join('_');
+        console.log(arr.join('_'));  // A_B_C只有这有才有效果，或者赋值
+        // 如果Array的元素不是字符串，将自动转换为字符串后再连接。
+
+        // 多维数组
+        // 如果数组的某个元素又是一个Array，则可以形成多维数组，例如：
+
+        var arr = [[1, 2, 3], [400, 500, 600], '-'];
+        // 上述Array包含3个元素，其中头两个元素本身也是Array。
+
+    </script>
+</body>
+</html>
