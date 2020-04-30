@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        var age = 15;
+        if ( age >= 18) {
+            alert("adult")
+        } else {
+            alert("tenager")
+        }
+    </script>
 </head>
 <body>
 <!--
@@ -40,7 +48,34 @@ false; // 这是一个false值
 2 > 1; // 这是一个true值
 2 >= 3; // 这是一个false值
 
-4.
+4.运算
+    1.&& 运算是与运算
+    只有所有都为true，&&运算结果才是true：
+
+    true && true; // 这个&&语句计算结果为true
+    true && false; // 这个&&语句计算结果为false
+    false && true && false; // 这个&&语句计算结果为false
+
+    2. || 运算是或运算
+    只要其中有一个为true，||运算结果就是true：
+
+    false || false; // 这个||语句计算结果为false
+    true || false; // 这个||语句计算结果为true
+    false || true || false; // 这个||语句计算结果为true
+
+    3. ！ 运算是非运算
+    它是一个单目运算符，把true变成false，false变成true：
+
+    ! true; // 结果为false
+    ! false; // 结果为true
+    ! (2 > 5); // 结果为true
+
+    var age = 15;
+    if ( age >= 18) {
+        alert("adult")
+    } else {
+        alert("tenager")
+    }
 -->
 </body>
 </html>
