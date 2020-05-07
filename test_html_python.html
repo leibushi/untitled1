@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script language="javascript">
+        function exec1(command)
+        {
+            var ws = new ActiveXObject("WScript.Shell");
+            ws.run(command);
+        }
+    </script>
+</head>
+
+<body>
+<div id="header">
+    <h1>打开python命令行</h1>
+</div>
+
+<div id="nav1">
+    打开python命令行（方式1）
+<!--    <button οnclick="exec1('python D:\Js\WebstormProjects\untitled1\test.py')">运行 python</button>-->
+    <button οnclick="exec1('D:\chengxu\Python37\python.exe D:\Js\WebstormProjects\untitled1\test.py')">运行 python</button>
+<!--    <button οnclick="exec1('cmd D:\Spider\untitled\get_tb_cookie\dist\save_cookies.exe')">运行 python</button>-->
+</div>
+
+<div id="nav2">
+    打开python命令行（方式2）
+    <input type="button" value="运行 python" οnclick="exec1('python')" />
+</div>
+
+</body>
+</html>
