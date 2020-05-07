@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+// <!--        第一种函数的
+// 上述abs()函数的定义如下：
+//
+// function指出这是一个函数定义；
+// abs是函数的名称；
+// (x)括号内列出函数的参数，多个参数以,分隔；
+// { ... }之间的代码是函数体，可以包含若干语句，甚至可以没有任何语句。
+// -->
+        function abs(x) {
+            if (x >= 0) {
+                console.log(x);
+                return x;
+            } else {
+                console.log(-x)
+                return -x;
+            }
+        }
+        abs(5);
+    //    第二种定义函数的方法
+        var abs = function (x) {
+            if (x >= 0) {
+                console.log(x);
+                return x;
+            } else {
+                console.log(-x);
+                return -x;
+            }
+
+        };
+        abs(4);
+    // 上述两种定义完全等价，注意第二种方式按照完整语法需要在函数体末尾加一个;，表示赋值语句结束。
+    //     调用函数时，按照顺序传入参数即可
+    <!--此时abs(x)函数的参数x将收到undefined，计算结果为NaN。-->
+    <!--要避免收到undefined，可以对参数进行检查：-->
+        function abs(x) {
+            if (typeof x !== 'number') {
+                // 投掷 扔 投
+                throw 'Not a number';
+            }
+            if ( x >= 0) {
+                console.log(x);
+                console.log(typeof x);
+                return x;
+            } else {
+                console.log(-x);
+                return -x;
+            }
+
+        }
+        abs(8);
+        var abs = function (x) {
+            if (typeof x !== 'number') {
+                throw 'Not a number';
+            }
+            if (x >= 0) {
+                console.log(x);
+                console.log(typeof x);
+                return x;
+            } else {
+                console.log(-x);
+                console.log(typeof -x);
+                return -x;
+            }
+        };
+        abs(15);
+    //   arguments 它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array：
+    // 使用严格模式
+        'use strict';
+        function foo(x) {
+          console.log('x = ' + x);
+          for (var i = 0; i < arguments.length; i++) {
+              console.log(i);
+              console.log('arg ' + i + '=' + arguments[i]);
+          }
+        }
+        foo(10, 20, 30);
+
+        var foo = function (x) {
+            console.log('x = ' + x);
+            for (var i = 0; i < arguments.length; i++) {
+                console.log('arg ' + i + ' = ' + arguments[i]);
+            }
+
+        };
+        foo(10, 23, 20);
+        foo(10);
+        foo(20)
+        // 利用arguments，你可以获得调用者传入的所有参数。也就是说，即使函数不定义任何参数，还是可以拿到参数的值：
+        function abs1() {
+            if (arguments.length === 0) {
+                console.log(0);
+                return 0;
+            }
+            var x = arguments[0];
+            console.log(x);
+            // 判断，相当于 也就是说？前面的是条件，如果符合条件了，y就等于：前面这个值，如果不符合就等于：后面这个值
+            // if (x > 0) {
+            //     y = x;
+            // } else {
+            //     y = -x
+            // }
+            console.log(x >= 0 ? x : -x);
+            return x;
+        }
+        abs1(); abs1(-10); abs1(20);
+        abs1(12, 33, 11);
+
+        // arguments 常用于判断传入参数的个数，你可能会看到这样的写法；
+        function foo3(a, b, c) {
+            if (arguments.length === 2) {
+                console.log(2);
+
+                // 实际拿到的是a和b，c为undefined
+                // 要把中间的参数b变为“可选”参数，就只能通过arguments判断，然后重新调整参数并赋值。
+                c = b; // 给b赋值
+                b = null; // b变为默认值
+                console.log(c);
+                console.log(b);
+                return 2;
+            }
+            // ...
+        }
+        // foo3();
+        foo3(100, 200, 300);
+
+        // rest参数
+        function foo4(a, b) {
+            var i, rest = [];
+            // 参数、对象长度大于2 for 循环添加到rest 数组里
+            if (arguments.length > 2) {
+                for (i = 2; i < arguments.length; i++) {
+                    // 通过下标获取参数
+                    rest.push(arguments[i]);
+                }
+            }
+            console.log('a = ' + a);
+            console.log('b = ' + b);
+            console.log(rest);
+        }
+        foo4(10,55);
+        foo4(20, 33, 22, 38);
+    //    为了获取除了已定义参数a、b之外的参数，我们不得不用arguments，并且循环要从索引2开始以便排除前两个参数，这种写法很别扭，只是为了获得额外的rest参数，有没有更好的方法？
+        function foo5(a, b, ...rest) {
+            console.log('a = ' + a);
+            console.log('b = ' + b);
+            console.log(rest);
+
+        }
+
+        foo5(1, 2, 3, 4, 5);
+        foo5(1);
+        'use strict';
+        function sum(...rest) {
+            console.log(rest);
+        }
+        sum(1, 3, 4, 6, 7);
+        function foo6() {
+            return {
+                name: 'foo6'
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>
